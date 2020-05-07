@@ -1,0 +1,8 @@
+NumberOfIteration, MakespamInIteration
+0, 551			
+1, 535			
+27, 535			
+53, 534			
+56, 514			
+245, 513			
+400, 505			

@@ -1,0 +1,223 @@
+
+\documentclass[12pt, twoside]{report}
+
+\usepackage[a4paper, inner=2.5cm, outer=2.5 cm, top=2.5 cm, bottom = 2.5 cm,
+            headheight=2cm, voffset=0.5cm, headsep=1.5cm, footskip=1.5cm]{geometry}
+%\usepackage[utf8x]{inputenc}    %escribir tildes sin código
+\usepackage[spanish, es-tabla]{babel}	%escribir en español
+\hyphenation{SIMIO}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}    
+\usepackage{fancyhdr}          %personalizar estilo página
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{import}            % para poder importar ficheros de carpetas dentro de este proyecto
+\usepackage{listings}
+%\usepackage{tabu}
+\usepackage{makecell}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage[toc,page]{appendix}
+\usepackage{verbatimbox}
+\usepackage{background}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{tgadventor} % Sans serif font   
+\usepackage{charter} % serif font           
+\usepackage{tgtermes} % serif font
+\usepackage{tgpagella} % serif font
+\usepackage{listings}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{titlesec} %Select alternative section titles
+\usepackage{hyperref} %para vínculos
+\usepackage{lipsum}
+    \hypersetup{
+         colorlinks   = true,
+         citecolor    = gray,
+         urlcolor     = CadetBlue,
+         linkcolor    = darkBlue,
+         %linktoc      = all
+    }
+
+\setlength{\parindent}{3em}
+\setlength{\parskip}{1.5em}
+\renewcommand{\baselinestretch}{1}
+\definecolor{colChap}{HTML}{002b36}
+\definecolor{colSec}{HTML}{005A6F}
+\definecolor{colSubsec}{HTML}{008eb1}
+\definecolor{colSubsubsec}{HTML}{00a3cb}
+
+\usepackage{fancyhdr}
+
+
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1} }
+
+\fancyhf{}
+%\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textit{ \nouppercase{Modelo de simulación para la gestión de un sistema logístico del sector petroquímico}} }
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{plain}{ %
+  \fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{0pt}
+	%\fancyfoot[LE,RO]{\thepage}
+	%\fancyfoot[RE]{Escuela Técnica Superior Ingenieros Industriales (UPM)}
+	%\fancyfoot[LO]{Autor: Jorge Guede Barcenilla}
+}
+
+\fancypagestyle{otherstyle}{
+	\fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+%\lfoot[Escuela Técnica Superior Ingenieros Industriales (UPM)]{Autor: Guillermo González-Santander de la Cruz}
+
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[RE]{Escuela Técnica Superior Ingenieros Industriales (UPM)}
+\fancyfoot[LO]{Guillermo González-Santander de la Cruz}
+
+\titleformat{\chapter}
+ {\LARGE\fontfamily{qag}\selectfont\bfseries\color{colChap}}{\thechapter. }{0pt}{}
+\titlespacing*{\chapter}{0pt}{-15pt}{20pt}
+
+\titleformat{\section}
+{\color{colSec}\Large\fontfamily{qag}\selectfont\bfseries}
+{\color{colSec}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{colSubsec!85!}\large\bfseries}
+{\color{colSubsec!85!}\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\color{colSubsubsec!85!}\normalsize\bfseries}
+{\color{colSubsubsec!85!}\thesubsubsection}{1em}{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{darkBlue}{RGB}{0,0,120}
+\definecolor{lightGrey}{RGB}{224,224,235}
+\definecolor{lighterGrey}{RGB}{240,240,245}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Palabras clave: }} #1}
+
+% Para códigos
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=4pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+
+
+
+\lstset{style=mystyle}
+
+\let\oldfootnotesize\footnotesize
+\renewcommand*{\footnotesize}{\oldfootnotesize\scriptsize}
+
+\addto\captionsspanish{%
+     \renewcommand\listtablename{Índice de tablas}}
+
+\addto\captionsspanish{\renewcommand{\bibname}{Referencias}}
+
+\renewcommand{\bibname}{Referencias}
+
+\makeatletter
+\renewcommand\@biblabel[1]{}
+\makeatother
+
+\begin{document}
+
+%\begin{figure}
+%	\centering
+%		\includegraphics[width=1\textwidth]{Img/Portada2.png}
+%\end{figure}
+
+
+\SetBgContents{}
+\pagenumbering{gobble}
+
+
+\hypersetup{linkcolor=black}\tableofcontents\clearpage
+ 
+
+
+
+\listoffigures
+\clearpage
+
+\listoftables
+\clearpage
+\hypersetup{linkcolor=darkBlue}
+
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+
+\fontdimen2\font=2\fontdimen2\font
+\pagestyle{fancy}
+
+\fancypagestyle{plain}{ %
+  \fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{1pt}
+	\fancyfoot[LE,RO]{\thepage}
+	\fancyfoot[RE]{Escuela Técnica Superior Ingenieros Industriales (UPM)}
+	\fancyfoot[LO]{Jorge Guede Barcenilla}
+}
+
+\include{Pages/Resumen}
+
+
+\include{Pages/Agradecimientos}
+ 
+\include{Pages/Introduccion}
+\include{Pages/Sector}
+\include{Pages/Teorico}
+\include{Pages/Definicion}
+\include{Pages/Modelo}
+\include{Pages/Explotacion}
+\include{Pages/Analisis}
+\include{Pages/PresuPlan}
+\include{Pages/Conclusiones}
+%\include{Pages/Referencias}
+\addcontentsline{toc}{chapter}{Referencias}
+\begin{thebibliography}{9}
+\bibliographystyle{apalike}
+\bibitem{Petroleo} Asociación Española de Operadores de Productos Petrolíferos. \textit{La industria del refino en España.} [En línea]. "`http://www.aop.es/informes/informes\_sector/dossier\_la\_industria.pdf"'. Recuperado julio 2016.
+
+\end{thebibliography}
+
+
+%ANEXOS
+%\begin{appendices}
+%\import{Pages/}{aimms.tex}
+%\import{Pages/}{python.tex}
+%\end{appendices}
+
+\end{document}
